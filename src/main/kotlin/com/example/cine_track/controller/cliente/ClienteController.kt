@@ -1,6 +1,7 @@
 package com.example.cine_track.controller.cliente
 
 import com.example.cine_track.service.cliente.ClienteService
+import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -20,7 +21,7 @@ class ClienteController (
 
     @PostMapping
     fun criarCliente(
-        @RequestBody request: CriarClienteRequest
+        @RequestBody @Valid request: CriarClienteRequest
     ): ResponseEntity<ClienteDTO> {
 
         val clienteCriado = service.criarCliente(request)
