@@ -24,8 +24,12 @@ class FilmeController(
     }
 
     @GetMapping("/{id}")
-    fun filmePorID(@PathVariable id: UUID) =
-        service.buscarPorId(id)
+    fun filmePorID(@PathVariable id: UUID
+    ): ResponseEntity<FilmeDTO> {
+
+        val filme = service.buscarPorId(id)
+        return ResponseEntity.ok(filme)
+    }
 
      @PostMapping
      fun criarFilme(

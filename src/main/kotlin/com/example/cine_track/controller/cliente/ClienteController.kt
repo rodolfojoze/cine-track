@@ -37,8 +37,11 @@ class ClienteController (
     }
 
     @GetMapping("/{id}")
-    fun clientePorId(@PathVariable id: UUID) =
-        service.buscarPorId(id)
+    fun clientePorId(@PathVariable id: UUID
+    ): ResponseEntity<ClienteDTO> {
+        val cliente = service.buscarPorId(id)
+        return ResponseEntity.ok(cliente)
+    }
 
     @PutMapping("/{id}")
     fun editarCliente(
